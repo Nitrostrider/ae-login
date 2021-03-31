@@ -29,19 +29,19 @@ db.once('open', () => console.log("Connected to Mongoose"))*/
 
 
 //want to access forms within post method
-app.use(flash())
-app.use(session({
+router.use(flash())
+router.use(session({
   //red check env file, make sure it's long string of letters to make it more secure
   secret: process.env.SESSION_SECRET,
   resave:false,
   saveUninitialized: false
 }))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride('_method'))
+router.use(passport.initialize())
+router.use(passport.session())
+router.use(methodOverride('_method'))
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('teachers/index', { name: req.user.name})
+  res.render('teachers', { name: req.user.name})
 })
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
@@ -49,8 +49,8 @@ router.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: 'teachers/index',
-  failureRedirect: 'teachers/login',
+  successRedirect: 'index',
+  failureRedirect: 'login',
   failureFlash:true
 }))
 
@@ -69,17 +69,17 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    res.redirect('teachers/login')
+    res.redirect('login')
     console.log(users)
   } catch {
-    res.redirect('teachers/register')
+    res.redirect('register')
   }
 })
 
 //signing out
 router.delete('/logout', (req, res) => {
   req.logOut()
-  res.redirect('teachers/login')
+  res.redirect('login')
 })
 
 function checkAuthenticated(req, res, next) {
@@ -87,12 +87,12 @@ function checkAuthenticated(req, res, next) {
     return next()
   }
 
-  res.redirect('teachers/login')
+  res.redirect('login')
 }
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('teachers/index')
+    return res.redirect('index')
   }
 
   next()
