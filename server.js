@@ -11,6 +11,9 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
+const indexRouter = require('./routes/index')
+const teacherRouter = require('./routes/teachers')
+
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
@@ -28,7 +31,7 @@ const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log("Connected to Mongoose"))*/
 
-app.set('view-engine', 'ejs')
+app.set('view engine', 'ejs')
 //want to access forms within post method
 app.use(express.urlencoded({ extended:false}))
 app.use(flash())
@@ -100,4 +103,6 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
+app.use('/', indexRouter)
+app.use('/teachers', teacherRouter)
 app.listen(process.env.PORT || 3000)
