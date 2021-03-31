@@ -6,6 +6,8 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+//mongoose part
+const Teacher = require('../models/teacher')
 
 
 const initializePassport = require('./../passport-config')
