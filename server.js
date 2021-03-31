@@ -14,16 +14,16 @@ const methodOverride = require('method-override')
 const indexRouter = require('./routes/index')
 const teacherRouter = require('./routes/teachers')
 
-const initializePassport = require('./passport-config')
+/*const initializePassport = require('./passport-config')
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
   id => users.find(user => user.id === id)
 )
 
-/*use database
-const users =[]*/
+use database
 const users =[]
+const users =[]*/
 
 /*const mongoose = require("mongoose")
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser:true, useUnifiedTopology:true })
@@ -34,9 +34,10 @@ db.once('open', () => console.log("Connected to Mongoose"))*/
 app.set('view engine', 'ejs')
 app.set('/views', __dirname + '/views')
 app.set("layout", 'layouts/layout')
+app.use(expressLayouts)
 //want to access forms within post method
 app.use(express.urlencoded({ extended:false}))
-app.use(flash())
+/*app.use(flash())
 app.use(session({
   //red check env file, make sure it's long string of letters to make it more secure
   secret: process.env.SESSION_SECRET,
@@ -103,7 +104,7 @@ function checkNotAuthenticated(req, res, next) {
   }
 
   next()
-}
+}*/
 
 app.use('/', indexRouter)
 app.use('/teachers', teacherRouter)
