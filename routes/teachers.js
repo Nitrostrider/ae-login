@@ -40,25 +40,25 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
 
-app.get('/', checkAuthenticated, (req, res) => {
+router.get('/', checkAuthenticated, (req, res) => {
   res.render('index.ejs', { name: req.user.name})
 })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+router.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash:true
 }))
 
-app.get('/register', checkNotAuthenticated, (req, res) => {
+router.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register.ejs')
 })
 
-app.post('/register', checkNotAuthenticated, async (req, res) => {
+router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     users.push({
@@ -77,7 +77,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 })
 
 //signing out
-app.delete('/logout', (req, res) => {
+router.delete('/logout', (req, res) => {
   req.logOut()
   res.redirect('/login')
 })
