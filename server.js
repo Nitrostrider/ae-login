@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const app = express()
+const expressLayouts = require("express-ejs-layouts")
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
@@ -17,8 +18,15 @@ initializePassport(
   id => users.find(user => user.id === id)
 )
 
-//use database
+/*use database
+const users =[]*/
 const users =[]
+
+const mongoose = require("mongoose")
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser:true, useUnifiedTopology:true })
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log("Connected to Mongoose"))
 
 app.set('view-engine', 'ejs')
 //want to access forms within post method
@@ -64,6 +72,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       password: hashedPassword
     })
     res.redirect('/login')
+    console.log(users)
   } catch {
     res.redirect('/register')
   }
