@@ -87,12 +87,12 @@ function checkAuthenticated(req, res, next) {
     return next()
   }
 
-  res.redirect('login')
+  res.redirect('teachers/login')
 }
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('index')
+    return res.redirect('teachers')
   }
 
   next()
