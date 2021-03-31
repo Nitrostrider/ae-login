@@ -41,21 +41,21 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { name: req.user.name})
+  res.render('teachers/index', { name: req.user.name})
 })
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login.ejs')
+  res.render('teachers/login')
 })
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
+  successRedirect: 'teachers/index',
+  failureRedirect: 'teachers/login',
   failureFlash:true
 }))
 
 router.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register.ejs')
+  res.render('teachers/register')
 })
 
 router.post('/register', checkNotAuthenticated, async (req, res) => {
@@ -69,17 +69,17 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    res.redirect('/login')
+    res.redirect('teachers/login')
     console.log(users)
   } catch {
-    res.redirect('/register')
+    res.redirect('teachers/register')
   }
 })
 
 //signing out
 router.delete('/logout', (req, res) => {
   req.logOut()
-  res.redirect('/login')
+  res.redirect('teachers/login')
 })
 
 function checkAuthenticated(req, res, next) {
@@ -87,12 +87,12 @@ function checkAuthenticated(req, res, next) {
     return next()
   }
 
-  res.redirect('/login')
+  res.redirect('teachers/login')
 }
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('/')
+    return res.redirect('teachers/index')
   }
 
   next()
