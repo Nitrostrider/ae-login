@@ -32,6 +32,8 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log("Connected to Mongoose"))*/
 
 app.set('view engine', 'ejs')
+app.set('/views', __dirname + '/views')
+app.set("layout", 'layouts/layout')
 //want to access forms within post method
 app.use(express.urlencoded({ extended:false}))
 app.use(flash())
