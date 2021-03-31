@@ -7,25 +7,48 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 //mongoose part
-const Teacher = require('../models/teacher')
+//const Teacher = require('../models/teacher')
+
+const mongoose = require("mongoose")
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser:true, useUnifiedTopology:true })
+
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log("Connected to Mongoose"))
+
+/*const teacherSchema = new mongoose.Schema({
+  name: req.body.name,
+  id: Date.now().toString(),
+  email: req.body.email,
+})*/
+const teacherSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  id: String,
+  password: Number,
+})
+
+const Teacher = mongoose.model("Teacher", teacherSchema)
+
+
+/*use database
+const users =[]*/
+const users =[]
+
 
 
 const initializePassport = require('./../passport-config')
+const { authorize } = require('passport')
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
   id => users.find(user => user.id === id)
 )
 
-/*use database
-const users =[]*/
-const users =[]
 
-/*const mongoose = require("mongoose")
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser:true, useUnifiedTopology:true })
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log("Connected to Mongoose"))*/
+
+
+module.exports = mongoose.model("Teacher", teacherSchema)
 
 
 //want to access forms within post method
@@ -49,7 +72,7 @@ router.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: 'index',
+  successRedirect: '/teachers',
   failureRedirect: 'login',
   failureFlash:true
 }))
@@ -59,8 +82,15 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 })
 
 router.post('/register', checkNotAuthenticated, async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 10)
+  /*const teacher = new Teacher({
+    id:Date.now().toString(),
+    name:req.body.name,
+    email: req.body.email,
+    password:hashedPassword
+  })*/
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    //const newTeacher = await teacher.save()
     users.push({
       //automatically generated w/ database
       //id is timestamp
@@ -70,7 +100,10 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       password: hashedPassword
     })
     res.redirect('login')
-    console.log(users)
+    console.log(teacher)
+    /*Teacher.save(function (err) {
+      if (err) return handleError(err);
+    })*/
   } catch {
     res.redirect('register')
   }
