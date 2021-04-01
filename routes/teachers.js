@@ -6,6 +6,7 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const passportLocalMongoose = require('passport-local-mongoose')
 //mongoose part
 //const Teacher = require('../models/teacher')
 
@@ -22,11 +23,13 @@ db.once('open', () => console.log("Connected to Mongoose"))
   email: req.body.email,
 })*/
 const teacherSchema = new mongoose.Schema({
-  name: String,
-  email: String,
+  id: { type: String },
+  name: { type: String },
+  email: { type: String },
   //green probably not necessary, use _id instead
   //id: String,
-  password: String,
+  password: { type: String },
+  __v: false,
 })
 
 const Teacher = mongoose.model("Teacher", teacherSchema)
@@ -39,21 +42,65 @@ const users = []
 
 
 const initializePassport = require('./../passport-config')
-const { authorize } = require('passport')
 initializePassport(
   passport,
   function (email) {
-    return users.find(function (user) {
-      return user.email === email;
+    /*Teacher.find(function (err, teachers) {
+      if (err) return console.error(err);
+      teachers.find(function (user1) {
+        var hello = user1.email === email;
+        console.log(hello)
+        return hello
+      })
+    })*/
+    //red this is equivalent
+    /*
+    Teacher.find(function (err, teachers) {
+      if (err) return console.error(err);
+      console.log(teacher);
+    })*/
+    //red to this
+    /*
+    console.log(users)
+    */
+
+    return {
+      id: '1617261286683',
+      name: 'hello',
+      email: 'hello@hello',
+      password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
+    }
+
+    var fish = users.find(function (user1) {
+      return user1.email === email;
     })
+    console.log(fish)
+    return fish
   },
   function (id) {
-    return users.find(function (user) {
-      return user.id === id;
+    return {
+      id: '1617261286683',
+      name: 'hello',
+      email: 'hello@hello',
+      password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
+    }
+    var blanket = users.find(function (user1) {
+      return user1.id === id;
     })
+    console.log(blanket)
+    return blanket
+    /*Teacher.find(function (err, teachers) {
+      if (err) return console.error(err);
+      teachers.find(function (user1) {
+        return user1.id === id;
+      })
+    })*/
   }
 )
-
+/*Teacher.find(function (err, teachers) {
+  if (err) return console.error(err);
+  console.log(teachers);
+})*/
 
 //want to access forms within post method
 router.use(flash())
@@ -87,14 +134,19 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10)
-  const teacher = new Teacher({
-    //id: Date.now().toString(),
-    name: req.body.name,
-    email: req.body.email,
-    password: hashedPassword
-  })
+
+
+  //teacher.save()
   try {
-    //const newTeacher = await teacher.save()
+    const teacher = new Teacher({
+      //id: Date.now().toString(),
+      id: Date.now().toString(),
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+    })
+
+
     users.push({
       //automatically generated w/ database
       //id is timestamp
@@ -103,14 +155,29 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    res.redirect('login')
-    console.log(teacher)
-    console.log(users)
-    /*Teacher.save(function (err) {
-      if (err) return handleError(err);
+    await teacher.save()
+    /*var car = Teacher.find(function (err, teacher) {
+      if (err) return console.error(err);
+      return(teacher);
+    })
+    console.log(car)*/
+    Teacher.find(function (err, teachers) {
+      if (err) return console.error(err);
+      console.log(teachers);
+    })
+    //console.log(await Teacher.find({email: "maxwellzye@gmail.com"}))
+    //const cow = await Teacher.find({});
+    /*const watermelon = Teacher.find(function (err, teacher) {
+      if (err) return console.error(err);
+      return teacher.find(function (user1) {
+        return user1.id === id;
+      })
     })*/
+    res.redirect('login')
+    //console.log(users)
   } catch {
     res.redirect('register')
+    console.log("Something went wrong")
   }
 })
 
@@ -130,7 +197,7 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('teachers')
+    return res.redirect('/teachers')
   }
 
   next()
