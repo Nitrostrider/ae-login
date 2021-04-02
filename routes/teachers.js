@@ -7,7 +7,7 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const passportLocalMongoose = require('passport-local-mongoose')
-//mongoose part
+//mongoose part, maybe add later onto seperate file?
 //const Teacher = require('../models/teacher')
 
 const mongoose = require("mongoose")
@@ -45,13 +45,31 @@ const initializePassport = require('./../passport-config')
 initializePassport(
   passport,
   function (email) {
-    /*Teacher.find(function (err, teachers) {
-      if (err) return console.error(err);
-      teachers.find(function (user1) {
-        var hello = user1.email === email;
-        console.log(hello)
-        return hello
-      })
+    /*const example = {
+      id: '1617297614771',
+      name: 'w@w',
+      email: 'w@w',
+      password: '$2b$10$Hs.T52ivYxLZNmIx7viTcecslcdNJ7dk8fRaa5ud5/pj3xlTkoSIe',
+    }*/
+    var abcd = email
+    Teacher.findOne({ email: [abcd] }, (error, data) => {
+      if (error) {
+        console.log(error)
+      } else {
+        //console.log(data)
+        //console.log("(MongoDB) The second parameter of intializePassport is " + typeof data)
+        //console.log(data)
+        return data
+      }
+    })
+
+
+    /*Teacher.findOne({ email: [abcd] }, (error, data) => {
+      if (error) {
+        console.log(error)
+      } else {
+        //console.log(data)
+      }
     })*/
     //red this is equivalent
     /*
@@ -63,32 +81,60 @@ initializePassport(
     /*
     console.log(users)
     */
-
-    return {
-      id: '1617261286683',
-      name: 'hello',
-      email: 'hello@hello',
-      password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
-    }
-
-    var fish = users.find(function (user1) {
-      return user1.email === email;
+    /*
+     return {
+       _id: 123123123123123,
+       id: '1617261286683',
+       name: 'hello',
+       email: 'hello@hello',
+       password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
+     }*/
+    /*var cow = email
+    var fish = users.find(function (grass) {
+      return grass.email === cow;
     })
+    console.log("(Array)The second parameter of intializePassport is "+ typeof fish)
+    //console.log(fish)
     console.log(fish)
-    return fish
+    return fish*/
   },
   function (id) {
-    return {
+    /*return {
+      _id: 123123123123123,
       id: '1617261286683',
       name: 'hello',
       email: 'hello@hello',
       password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
+    }*/
+    /*var smoothie = function(user1, done) {
+      Teacher.find({id: user1.id}, function (err, data) {
+        if(err) return console.log(err);
+        done(null, data);
+      })
     }
-    var blanket = users.find(function (user1) {
+    console.log(smoothie)
+    return smoothie*/
+    /*const example = {
+      id: '1617302467465',
+      name: 'w',
+      email: 'w@w',
+      password: '$2b$10$u.3ObQNPHzrAbrcx4pJGZ.nCVF6q89Z0z7FqOvheUAuLE6xbcc4RK'
+    }
+*/
+    //return example
+    var abcde = id
+    Teacher.findOne({ id: [abcde] }, (error, data) => {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data)
+        return data
+      }
+    })
+    /*var blanket = users.find(function (user1) {
       return user1.id === id;
     })
-    console.log(blanket)
-    return blanket
+    return blanket*/
     /*Teacher.find(function (err, teachers) {
       if (err) return console.error(err);
       teachers.find(function (user1) {
@@ -123,6 +169,8 @@ router.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+  //using local strategy
+  //passport middleware
   successRedirect: '/teachers',
   failureRedirect: 'login',
   failureFlash: true
@@ -145,6 +193,14 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
     })
+    /*const example = {
+      _id: 123123123123123,
+      id: '1617261286683',
+      name: 'hello',
+      email: 'hello@hello',
+      password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
+    }*/
+    //console.log(example.id)
 
 
     users.push({
@@ -153,7 +209,8 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
-      password: hashedPassword
+      password: hashedPassword,
+      sup: "sup",
     })
     await teacher.save()
     /*var car = Teacher.find(function (err, teacher) {
@@ -161,10 +218,10 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       return(teacher);
     })
     console.log(car)*/
-    Teacher.find(function (err, teachers) {
+    /*Teacher.find(function (err, teachers) {
       if (err) return console.error(err);
       console.log(teachers);
-    })
+    })*/
     //console.log(await Teacher.find({email: "maxwellzye@gmail.com"}))
     //const cow = await Teacher.find({});
     /*const watermelon = Teacher.find(function (err, teacher) {
@@ -174,6 +231,7 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
       })
     })*/
     res.redirect('login')
+    console.log(teacher)
     //console.log(users)
   } catch {
     res.redirect('register')
