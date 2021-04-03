@@ -6,13 +6,15 @@ const express = require('express')
 const app = express()
 const expressLayouts = require("express-ejs-layouts")
 const bcrypt = require('bcrypt')
-const passport = require('passport')
+//const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
 const indexRouter = require('./routes/index')
 const teacherRouter = require('./routes/teachers')
+const mongoose = require('mongoose')
+const passport = require("./passport-config")
 
 /*const initializePassport = require('./passport-config')
 initializePassport(
@@ -105,6 +107,12 @@ function checkNotAuthenticated(req, res, next) {
 
   next()
 }*/
+
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log("Connected to Mongoose"))
 
 app.use('/', indexRouter)
 app.use('/teachers', teacherRouter)
