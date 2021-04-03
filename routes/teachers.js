@@ -37,7 +37,14 @@ const Teacher = mongoose.model("Teacher", teacherSchema)
 
 /*use database
 const users =[]*/
-const users = []
+const users = [
+  {
+    id: '1617415077055',
+    name: 'Teacher1',
+    email: 'academiaedge@gmail.com',
+    password: '$2b$10$GruNrRLu5LE9dye0s3gwnOOfH4Cs1wXJUTqnJ7gHPHVhQoNzXJP3m',
+  }
+]
 
 
 
@@ -51,17 +58,16 @@ initializePassport(
       email: 'w@w',
       password: '$2b$10$Hs.T52ivYxLZNmIx7viTcecslcdNJ7dk8fRaa5ud5/pj3xlTkoSIe',
     }*/
-    var abcd = email
+    /*var abcd = email
     Teacher.findOne({ email: [abcd] }, (error, data) => {
       if (error) {
         console.log(error)
       } else {
-        //console.log(data)
-        //console.log("(MongoDB) The second parameter of intializePassport is " + typeof data)
-        //console.log(data)
+        console.log(data)
+        console.log("(MongoDB) The second parameter of intializePassport is " + typeof data)
         return data
       }
-    })
+    })*/
 
 
     /*Teacher.findOne({ email: [abcd] }, (error, data) => {
@@ -89,14 +95,14 @@ initializePassport(
        email: 'hello@hello',
        password: '$2b$10$rKGsbqmaHqAOXCMvOjhDx.tBKLgyDilRN65XtxU87yct9iSL2tQ8S'
      }*/
-    /*var cow = email
+    var cow = email
     var fish = users.find(function (grass) {
       return grass.email === cow;
     })
     console.log("(Array)The second parameter of intializePassport is "+ typeof fish)
     //console.log(fish)
     console.log(fish)
-    return fish*/
+    return fish
   },
   function (id) {
     /*return {
@@ -122,7 +128,7 @@ initializePassport(
     }
 */
     //return example
-    var abcde = id
+    /*var abcde = id
     Teacher.findOne({ id: [abcde] }, (error, data) => {
       if (error) {
         console.log(error)
@@ -130,11 +136,11 @@ initializePassport(
         console.log(data)
         return data
       }
-    })
-    /*var blanket = users.find(function (user1) {
+    })*/
+    var blanket = users.find(function (user1) {
       return user1.id === id;
     })
-    return blanket*/
+    return blanket
     /*Teacher.find(function (err, teachers) {
       if (err) return console.error(err);
       teachers.find(function (user1) {
