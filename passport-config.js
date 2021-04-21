@@ -13,16 +13,6 @@ async function initialize(passport, getUserByEmail, getUserById) {
     console.log(getUserByEmail)
     //red make both getUserByEmail() and getUserById() into async/await functions
     
-    async function test() {
-      return await getUserByEmail()
-    }
-    async function whatever() {
-      const hello = await test()
-      console.log("did it work")
-      console.log(hello)
-    }
-    whatever()
-    
     const user1 = getUserByEmail(email)
     console.log("user1 is " + typeof user1)
     console.log(user1)
