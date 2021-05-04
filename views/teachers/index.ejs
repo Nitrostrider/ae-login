@@ -1,35 +1,128 @@
-<h1>Hi <%= name %></h1>
-<div>
-  <div class="bg-imagecourses"> 
-    <div class="bg-text">
-        <h1 style = "font-size: 50px; color:white; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" data-aos="zoom-in">AcademiaEdge Teacher Dashboard</h1>
-    </div>
-  </div>
-  <section>
-  
-  <h1 style = "font-size: 35px; color:black; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" data-aos="zoom-in">All Links to Visit: </h1>
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 1</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 2</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 3</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 4</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 5</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 6</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 7</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 8</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 9</button></a>
-  
-  <a href="https://www.google.com" target="_blank"><button class="button button1" style =  "background-color: #4CAF50; /* Green */ border: none;color: white; padding: 10px 65px; text-align: center; text-decoration: none; display: inline-block; font-size: 30px; margin: 26px 2px; transition-duration: 0.4s; cursor: pointer;">Link 10</button></a>
-  
-  </section>
+<h1>Hi <%= name %>
+</h1>
+<p>Hello. Welcome to the AcademiaEdge Teacher Dashboard.</p>
+<p>Click on the zoom links to start your class. Don't forget to record!</p>
+<p>For rescheduling, questions, daylight saving time, bugs, ect. contact Admin or Thomas Guzman through Discord.</p>
+<p style="text-align:center">Last updated 5/3/21</p>
+<div
+  style="display:grid;grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;border-style:solid;border-color:black;border-width:2-px;">
+  <!--row 1-->
+  <!--placeholder-->
+  <div class="dayofweek borderR"></div>
+  <div class="dayofweek">Monday</div>
+  <div class="dayofweek">Tuesday</div>
+  <div class="dayofweek">Wedensday</div>
+  <div class="dayofweek">Thursday</div>
+  <div class="dayofweek">Friday</div>
+  <div class="dayofweek">Saturday</div>
+  <div class="dayofweek">Sunday</div>
+
+  <!--row 2-->
+  <div class="borderR">1-2 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" style="background-color:red" target="_blank"
+    href="https://us02web.zoom.us/s/92117747135?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiI1dEt1RVRPYzdMZDA4bFJwZkNRLTJrMWo3SHhlalVGa01veVJPZWNzbndnLkFHLk5QcXVLNW1nTWliUXhDRG5mVU9WQlc2LU55QXBHV2NuaDgycFlFc1d3YmRWNkN0WFRaRnhrZEhWV3BkcTlNd3Zwa1BUdEFVZ0pfSVpsTVJlLlBLMWw1N3hkdkVIR0VqdU96Qk0zUlEuZWdnTWNMUkFqM3RCQ0FRaiIsImV4cCI6MTYxOTIxODUyOSwiaWF0IjoxNjE5MjExMzI5LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.IJNHKXrxr-pIGc9lwlbRvTQxF1eD5wvFuzKuiXTNfjY">
+    <button>PyGame</button>
+  </a>
+  <!--row 3-->
+  <div class="borderR">2-3 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" target="_blank"
+    href="https://us02web.zoom.us/s/94765670770?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiJyQV9KRGd1ZExfaGtuRGJsUXdhTjhPN2FqbTRJbDc4TmdyX0RqNjh0VElnLkFHLi1VNHVxbjRFcHRJS3VyRjE3dkttOTQ2cndZWmZlT3o0b0txRmkzdm9pdjQ4Wm9OX0hRbUFVbnUzT2tqUEJxdk1kdG5lY1FLY05PM1lDakk1Lno5Z01Tc0dBZllXcFZNUVVhRjVWSUEuN3R3ZkRVS3NEQTFSRHNsTyIsImV4cCI6MTYxOTIxODM1NiwiaWF0IjoxNjE5MjExMTU2LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.uqqnu_xQVozmGJSKhDa2l97-qgVYKdKkJv3QQOzzHag"
+    style="background-color:pink;">
+    <button>Python Intro</button>
+  </a>
+  <div></div>
+  <!--row 4-->
+  <div class="borderR">3-4 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" target="_blank"
+    href="https://us02web.zoom.us/s/93244249326?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiJ6eThleDVHczB2QUZab0pXZ09OQkVqUXRaUjM4Z0FLZmpXWGMwWnV3YlR3LkFHLk9HTkx6dmpBN182alRGMFVaanJ1NEx2V1JfZXgyTG8xbFFndGpMbnNQVk95b0hUWm0ycWVWMHBXSVpybEhvbmFvUzljOTFSb3FIWUZJWHkxLkxIcVotY0FTSEFMUWdFM3pYSndEc0EuZFRhRzhKbDZPS0oxRVZZWiIsImV4cCI6MTYxOTIxODU3OCwiaWF0IjoxNjE5MjExMzc4LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.-gwr9_1bFHcFKoT_Z9AXErCN5VH4I1KDzDkeVdj8rQY"
+    style="grid-row-start:4;grid-row-end: 6;grid-column-start:8;background-color:lightsteelblue;">
+    <button>Python Automation</button>
+  </a>
+  <!--row 5-->
+  <div class="borderR">4-5 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <!--row 6-->
+  <div class="borderR">5-6 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" style="background-color:yellow" target="_blank"
+    href="https://us02web.zoom.us/s/99788493856?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiIwSnNIcnl0T09UODZjV2d1a0gxNWZMa0FUUHA2S3F0OFVVQ3YzbTlwRVpvLkFHLm5SWjRJNl9xR1VXLUpGWkFfSFRndmtSNWFwZjh6UzRlcjBsOTFUQ1M4WERqTkpNdVNLcnBxcnVaLVBZTUJ5YjdjekhkSEg5RmFxU3N6Ny1zLmltYzhzTTMxNkVmQTZnUzZRaVRNeEEuMUlFRXVRMndLTlNRRU1ZbCIsImV4cCI6MTYxOTIxODUwMywiaWF0IjoxNjE5MjExMzAzLCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.UR52NrbUQdt9Dqn2xGp9erheNBaw-_WWP069_PZAoII">
+    <button>JS Intro (Jeremi)</button>
+  </a>
+  <a class="linkbtn" target="_blank"
+    href="https://us02web.zoom.us/s/95142541223?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiJ0VS1yZVB3cWtYM1gxaDNuank1b25rTzhlN1Z1SWM3RVRVWHNwYmZQaUtzLkFHLkJGQVJrTV9uLWlKRGlWaGFxMGxNSFRFdjgyQXFMQjY3OVczTWNmdWlWN29HTXExNHk0RzJzTFZVV1B6SWJUTFp2azYwa2UtTlJiZUswTHczLmJHZ1J1ZDNLMUY1SWhhQmxKVVZrV1EuZXB2UmhXYmJyQk9yQkRKSSIsImV4cCI6MTYxOTIxODYyMywiaWF0IjoxNjE5MjExNDIzLCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.oYz_RNV_c021XM0C683Wv9OBX9IvAdAKsnenk7r5uJY"
+    style="background-color:darkgray">
+    <button>Python DL</button>
+  </a>
+  <!--row 7-->
+  <div class="borderR">6-7 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" target="_blank"
+    href="https://us02web.zoom.us/s/98066035693?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiJIUGU0Nkl2MGsyWWo2NFVTRmotNGtLVWR6VkZXZkdnRXFxeE1GWUQtbGhNLkFHLktTdWJRVVMtcmpLSkFtYmxYV09XeVM3dWVsRXlhTEgyRmYzemhCcXdmT29ZMXhBMXVnQnpKWXd5YXE3TjJhTXNFVmN6S2ltVGVWT3kxc0d6LlltQUg4Skg1SWRZQUYwcDNwZkNWM3cuUUpRVFJjMDlrcHJEYkxONCIsImV4cCI6MTYxOTIxODY1NCwiaWF0IjoxNjE5MjExNDU0LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.nyMyY2NziL-R8xXz8b3kHreynhkZJlRHUBAISKc4Ejk"
+    style="background-color:orange">
+    <button>Webdev Intro</button>
+  </a>
+  <!--row 8-->
+  <div class="borderR">7-8 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a target="_blank" style='background-color:lightgreen' href="https://us02web.zoom.us/s/95546462016?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiI5WEpaaU5yYnYxU0tsc0dNMVRVcXc3TVZQV2RtNlNOeXhUY0FwQ2FqcldZLkFHLko3U0hVWE5FOU9KQ3pYajhOcTZ1eUMzOTlyRVM4MS16UWlxZFA4d3ljYThaMWRYTzBmY1otQjI5RS14WTBQdFU3V05tREYtY3JjOV9aYlJLLkxGY3NGbE1WZE5rRVJYZ214Y2d2ZWcuOVdsSU55RlhNclh1a01FayIsImV4cCI6MTYxOTIxNzk1NCwiaWF0IjoxNjE5MjEwNzU0LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.Mka-TwwLzC0BvQCdZonrCgWpV7Yp8Z5es8NyR8gIA9Y" class="linkbtn">
+    <button>Java Intro</button>
+  </a>
+  <div></div>
+  <a class="linkbtn" target="_blank" href="https://us02web.zoom.us/s/99990370627?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiIzcXN5MUhnc3JMNFQzdmt3aXJRcUNQYnhQYWk4NlQ3Y205WDFkcXd2WGNvLkFHLnJXYzBBU2Y2YVpzd2ZLX3lWYkwycmI3Z2hlQzBHRW9XRmZ0bjhsdVItM3lERldkYk5Wdk82Z1RLd0FxNDI4bGVDWnZmLWJ6MHRCWGluODZhLnZGSzJLXzVUbGZ3M0tVcTRZVG9PUkEuT0thRjhXQ2dURFhfNXE0OSIsImV4cCI6MTYxOTIxODcwOSwiaWF0IjoxNjE5MjExNTA5LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.0zMZ7xRoAUvE5r-HZURg-FtwMxKso6K_X6mNHuZDPQE" style="background-color:cornflowerblue">
+    <button>Rust Intro</button>
+  </a>
+  <!--row 9-->
+  <div class="borderR">8-9 PM</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <a class="linkbtn" target="_blank" href="" style="background-color:darkseagreen">
+    <button>JS Intro (Yinuo)</button>
+  </a>
+  <a class="linkbtn" target="_blank" href="https://us02web.zoom.us/s/91372340016?zak=eyJ6bV9za20iOiJ6bV9vMm0iLCJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjbGllbnQiLCJ1aWQiOiJVdzEzQTRXdVNTdWNHUnE1S2FPblVRIiwiaXNzIjoid2ViIiwic3R5IjoxLCJ3Y2QiOiJ1czAyIiwiY2x0IjowLCJzdGsiOiJVT2p1OEY2REFhOEVfYWVWZnJldGZLemRuRVhYWERnLWV6M0pnQm1tZzN3LkFHLmg3NlF1RVM2R2JqUHNSWi1zRE9HQ2tUV2hKVTJGMm1ocU9TaTY2YjRiTGJ0Q3dNbVRFVEcybjFES2tKNEhtckZrUGJDLWdRUm5jX09WdmNtLm1mNG5JNmM4VHV0aXo2aUZXRG92aFEuaU9CdTRDTnUwSXcwUGlhSiIsImV4cCI6MTYxOTIxODMxNCwiaWF0IjoxNjE5MjExMTE0LCJhaWQiOiJwMkhMcW14c1JfZTYyTDhQYXhLRlJnIiwiY2lkIjoiIn0.iLF6xO3uVG_J7gTII-SawFjnTUbzGlrGlvCw9-_OUO4" style="background-color:bisque">
+    <button>Java Competitive</button>
+  </a>
+  <div></div>
+  <div></div>
+
 </div>
+<p><sup>*</sup>Python Automation is actually from 3:30 to 4:30.</p>
+<p><sup>*</sup>Note that Aryaan's class isn't on here because he uses a zoom account from ScioVirtual.</p>
+<p><sup>*</sup>Neither is Scratch Intro because it uses Google Meets.</p>
 <form action="teachers/logout?_method=DELETE" method="POST">
   <button type="submit">Log Out</button>
 </form>

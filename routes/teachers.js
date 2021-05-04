@@ -43,6 +43,7 @@ const users = [
     name: 'Teacher1',
     email: 'academiaedge@gmail.com',
     password: '$2b$10$GruNrRLu5LE9dye0s3gwnOOfH4Cs1wXJUTqnJ7gHPHVhQoNzXJP3m',
+    //start class
   }
 ]
 
